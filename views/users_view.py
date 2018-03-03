@@ -6,7 +6,7 @@ from flask_login import login_user, logout_user
 from nell.database import db_session
 from nell.forms.users_form import RegistrationForm, LoginForm
 from nell.models.users_model import User
-from nell.helpers.secu_redirect import get_redirect_target, redirect_back
+from nell.helpers.secu_redir import get_redirect_target, redirect_back
 
 
 class RegisterView(View):
@@ -43,8 +43,8 @@ class LoginView(View):
             user = User(form.email.data, form.password.data)
             login_user(user)
             flash('Logged in successfully.')
-            next = get_redirect_target()
-            return redirect_back(next or 'index_page')
+            next_page = get_redirect_target()
+            return redirect_back(next_page or 'index_page')
         return render_template(self.template_name, form=form)
 
 

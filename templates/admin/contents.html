@@ -1,0 +1,17 @@
+{% extends "admin/base_layout.html" %}
+{% block title %}Admin contents{% endblock %}
+{% block head %}
+    {{ super }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block side_content %}
+    <ul>
+    {% for category in categories %}
+        <li>{{ category.name|e }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+{% block body_content %}
+{% endblock %}

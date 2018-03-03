@@ -5,6 +5,7 @@ from flask_login import LoginManager, login_required
 from .database import db_session
 from .views.index_view import IndexView
 from .views.users_view import RegisterView, ProfileView, LoginView, LogoutView
+from .views.admin_view import AdminContentsView
 from .models.users_model import User
 
 
@@ -46,6 +47,8 @@ app.add_url_rule('/login', view_func=LoginView.as_view(
 app.add_url_rule('/logout', view_func=logout_view)
 app.add_url_rule('/profile', view_func=profile_view)
 
+app.add_url_rule('/admin/contents', view_func=AdminContentsView.as_view(
+    'admin_contents_page', template_name='admin/contents.html'))
 
 if __name__ == '__main__':
     app.run()
