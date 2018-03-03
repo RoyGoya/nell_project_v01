@@ -1,3 +1,6 @@
+# Configuration Handling
+# http://flask.pocoo.org/docs/0.12/config/
+
 
 class Config(object):
     DEBUG = False

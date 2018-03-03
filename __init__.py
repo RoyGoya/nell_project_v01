@@ -11,10 +11,12 @@ from .models.users_model import User
 
 app = Flask(__name__)
 
+# Configuration Handling
 # http://flask.pocoo.org/docs/0.12/config/
 app.config.from_object('taberu.config.DevelopmentConfig')
 app.config.from_pyfile('settings.cfg')
 
+# Flask-Login
 # https://flask-login.readthedocs.io/en/latest/
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -26,12 +28,14 @@ def load_user(user_email):
     return user
 
 
+# SQLAlchemy
 # http://flask-sqlalchemy.pocoo.org/2.3/
 @app.teardown_appcontext
 def shutdown_session(exception=None):
     db_session.remove()
 
 
+# Pluggable Views
 # http://flask.pocoo.org/docs/0.12/views/
 logout_view = login_required(LogoutView.as_view(
     'logout_action', next_url='index_page'))
