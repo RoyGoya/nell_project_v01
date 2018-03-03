@@ -3,8 +3,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from flask_login import UserMixin
 
-from nell.database import Base
-from nell.helpers.timezone_gen import utc_now
+from taberu.database import Base
+from taberu.helpers.timezone_gen import utc_now
 
 
 class User(Base, UserMixin):

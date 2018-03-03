@@ -12,7 +12,7 @@ from .models.users_model import User
 app = Flask(__name__)
 
 # http://flask.pocoo.org/docs/0.12/config/
-app.config.from_object('nell.config.DevelopmentConfig')
+app.config.from_object('taberu.config.DevelopmentConfig')
 app.config.from_pyfile('settings.cfg')
 
 # https://flask-login.readthedocs.io/en/latest/

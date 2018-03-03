@@ -13,5 +13,5 @@ Base.query = db_session.query_property()
 
 
 def inint_db():
-    import nell.models.users_model
+    import taberu.models.users_model
     Base.metadata.create_all(bind=engine)

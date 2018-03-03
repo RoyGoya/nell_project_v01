@@ -1,7 +1,7 @@
 from wtforms import Form, BooleanField, StringField, PasswordField, \
     validators, SubmitField
 
-from nell.models.users_model import User
+from taberu.models.users_model import User
 
 
 class RegistrationForm(Form):

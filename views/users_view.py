@@ -3,10 +3,10 @@ from flask.views import View
 
 from flask_login import login_user, logout_user
 
-from nell.database import db_session
-from nell.forms.users_form import RegistrationForm, LoginForm
-from nell.models.users_model import User
-from nell.helpers.secu_redir import get_redirect_target, redirect_back
+from taberu.database import db_session
+from taberu.forms.users_form import RegistrationForm, LoginForm
+from taberu.models.users_model import User
+from taberu.helpers.secu_redir import get_redirect_target, redirect_back
 
 
 class RegisterView(View):
