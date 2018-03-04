@@ -1,7 +1,7 @@
 from flask import render_template, request, flash, redirect, url_for
 from flask.views import View
 
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 
 from taberu.database import db_session
 from taberu.forms.users_form import RegistrationForm, LoginForm
@@ -41,7 +41,9 @@ class LoginView(View):
         form = LoginForm(request.form)
         if request.method == 'POST' and form.validate():
             user = User(form.email.data, form.password.data)
-            login_user(user)
+            login_user(user, remember=False)
+            # Remember me
+            # login_user(user, remember=True)
             flash('Logged in successfully.')
             next_page = get_redirect_target()
             return redirect_back(next_page or 'index_page')
@@ -50,6 +52,7 @@ class LoginView(View):
 
 class LogoutView(View):
     methods = ['GET', 'POST']
+    decorators = [login_required]
 
     def __init__(self, next_url):
         self.next_url = next_url
