@@ -1,3 +1,8 @@
+# SQLAlchemy
+# http://flask.pocoo.org/docs/0.12/patterns/sqlalchemy/
+# flask_user_sign_in.html
+
+
 from sqlalchemy import Column, Integer, VARCHAR, Boolean, DATETIME
 from werkzeug.security import generate_password_hash, check_password_hash
 

@@ -1,3 +1,7 @@
+# WTForms
+# http://flask.pocoo.org/docs/0.12/patterns/wtforms/
+
+
 from wtforms import Form, BooleanField, StringField, PasswordField, \
     validators, SubmitField
 
