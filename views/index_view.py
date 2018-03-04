@@ -1,3 +1,7 @@
+# Pluggable Views
+# http://flask.pocoo.org/docs/0.12/views/
+
+
 from flask import render_template
 from flask.views import View
 

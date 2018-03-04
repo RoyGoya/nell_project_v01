@@ -1,3 +1,7 @@
+# Larger Applications
+# http://flask.pocoo.org/docs/0.12/patterns/packages/
+
+
 from flask import Flask
 
 from flask_login import LoginManager, login_required
@@ -23,6 +27,8 @@ login_manager.login_message = u"Please log in to access this page."
 login_manager.init_app(app)
 
 
+# Flask-Login
+# https://flask-login.readthedocs.io/en/latest/
 @login_manager.user_loader
 def load_user(user_email):
     user = User.query.filter_by(email=user_email).first()
@@ -36,13 +42,15 @@ def shutdown_session(exception=None):
     db_session.remove()
 
 
-# Pluggable Views
+# Decorating Views
 # http://flask.pocoo.org/docs/0.12/views/
 logout_view = login_required(LogoutView.as_view(
     'logout_action', next_url='index_page'))
 profile_view = login_required(ProfileView.as_view(
     'profile_page', template_name='users/profile.html'))
 
+# Pluggable Views
+# http://flask.pocoo.org/docs/0.12/views/
 app.add_url_rule('/', view_func=IndexView.as_view(
     'index_page', template_name='index.html'))
 app.add_url_rule('/register', view_func=RegisterView.as_view(

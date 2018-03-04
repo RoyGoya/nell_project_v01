@@ -1,7 +1,11 @@
+# Pluggable Views
+# http://flask.pocoo.org/docs/0.12/views/
+
+
 from flask import render_template, request, flash, redirect, url_for
 from flask.views import View
 
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user
 
 from taberu.database import db_session
 from taberu.forms.users_form import RegistrationForm, LoginForm
@@ -52,7 +56,6 @@ class LoginView(View):
 
 class LogoutView(View):
     methods = ['GET', 'POST']
-    decorators = [login_required]
 
     def __init__(self, next_url):
         self.next_url = next_url
